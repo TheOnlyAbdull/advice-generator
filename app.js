@@ -9,8 +9,11 @@ dice.addEventListener('click', ()=>{
 
 const getAdvice = async()=>{
     const res = await fetch(`https://api.adviceslip.com/advice`);
+    if(res.status == 404){
+        advice.textContent = `Something went wrong check your connection`;
+        id.textContent = `----`;
+    }
     const data = await res.json();
-    console.log(data);
     advice.textContent = `"${data.slip.advice}"`;
     id.textContent = `${data.slip.id}`;
 }

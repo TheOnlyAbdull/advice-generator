@@ -39,10 +39,13 @@
     font-size: 28px;
     font-weight: 800;
     margin: 1rem 0;
+    text-align: center;
+    letter-spacing: .8px;
 }
 .dema-con, .dice-con{
     display: block;
     text-align: center;
+    overflow: hidden;
 }
 .dema-con{
     margin-bottom: 2rem;
@@ -59,4 +62,21 @@
 }
 .dice-con img:hover{
     box-shadow: 0 0 5px hsla(150, 100%, 66%, 0.5),0 0 10px hsla(150, 100%, 66%, 0.5),0 0 15px hsla(150, 100%, 66%, 0.5),0 0 20px hsla(150, 100%, 66%, 0.5);
+}
+
+
+@media screen and (max-width : 850px) {
+    .content{
+        width: 90%;
+        padding: 1.5rem;
+        background-color: hsl(217, 19%, 24%);
+        border-radius: .8rem;
+        /* overflow: hidden; */
+    }
+    .dema{
+        content: url(./images/pattern-divider-mobile.svg) ;
+    }
+    .dice-con{
+        margin-bottom: -59px;
+    }
 }
