@@ -7,13 +7,21 @@ dice.addEventListener('click', ()=>{
     getAdvice();
 })
 
-const getAdvice = async()=>{
-    const res = await fetch(`https://api.adviceslip.com/advice`);
-    if(res.status == 404){
-        advice.textContent = `Something went wrong check your connection`;
-        id.textContent = `----`;
-    }
-    const data = await res.json();
-    advice.textContent = `"${data.slip.advice}"`;
-    id.textContent = `${data.slip.id}`;
+
+const getAdvice = ()=>{
+    fetch(`https://api.adviceslip.com/advice`)
+    .then(response =>{
+        if (response.ok) {
+            return response.json();
+        }else{
+            throw new Error(`request failed with status : ${response.status}`);
+        }
+    })
+    .then(data => {
+        advice.textContent = `"${data.slip.advice}"`;
+        id.textContent = `${data.slip.id}`;
+    })
+    .catch(error => {
+        console.error(`error : ${error}`);
+    });
 }
